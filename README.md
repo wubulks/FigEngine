@@ -46,7 +46,7 @@ fig.add_row([img_c], top_margin=0.2, unit="inch", align="center")
 # 5. 渲染并显示
 fig.show()
 # 6. 保存为高清图片
-# fig.save("output_figure.png", dpi=300)
+# fig.save("output_figure.png")
 # fig.save("output_figure.pdf")
 ```
 ---
@@ -74,9 +74,9 @@ fig.show()
 ```python
 from figengine import Tools
 # 列出所有可用字体，并高亮推荐的中文字体
-Tools.inspect_fonts()
+Tools.print_valid_fonts()
 # 搜索特定字体
-Tools.inspect_fonts(filter_text="Arial")
+Tools.print_valid_fonts(filter_text="Arial")
 ```
 ---
 ## 🤝 贡献指南
