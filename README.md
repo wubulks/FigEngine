@@ -14,6 +14,11 @@
 ```bash
 pip install git+ssh://git@github.com/wubulks/FigEngine.git
 ```
+## 安装
+
+```bash
+pip install git+[https://github.com/wubulks/FigEngine.git](https://github.com/wubulks/FigEngine.git)
+```
 ---
 ## 🚀 快速开始
 ### 1. Hello World：创建并标注一张图片
