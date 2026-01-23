@@ -8,8 +8,8 @@ version = "0.1.0"
 description = "High-Performance Structured Figure Engine"
 readme = "README.md"
 requires-python = ">=3.9"
-license = {text = "MIT"}
-authors = [{ name = "Omarjan Obulkasim @ SYSU", email = "wubulks@mail2.sysu.edu.cn" }]
+license = { file = "LICENSE"}
+authors = [{ name = "Mute @ SYSU", email = "wubulks@mail2.sysu.edu.cn" }]
 
 dependencies = [
   "numpy",
