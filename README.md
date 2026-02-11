@@ -12,14 +12,16 @@
 ## 🛠️ 安装
 ### 从 GitHub 安装最新开发版 (暂时推荐)
 ```bash
-pip install git+ssh://git@github.com/wubulks/FigEngine.git
+pip install git+https://github.com/wubulks/FigEngine.git
 ```
-## 安装
 
-```bash
-pip install git+[https://github.com/wubulks/FigEngine.git](https://github.com/wubulks/FigEngine.git)
+### 通过PyPI安装 (不久后支持)
 ```
+pip install figengine
+```
+
 ---
+
 ## 🚀 快速开始
 ### 1. Hello World：创建并标注一张图片
 ```python
@@ -46,42 +48,18 @@ img_c = fe.Image.new((8, 2), unit="inch", facecolor="#98FB98").labeled("c")
 # 3. 添加第一行：两张图片并排，中间留 0.1 英寸间隙
 fig.add_row([img_a, img_b], left_gaps=0.0, right_gaps=0.1, unit="inch")
 # 4. 添加第二行：一张长图，顶部与上一行留 0.2 英寸间隙
-fig.add_row([img_c], top_margin=0.2, unit="inch", align="center")
+fig.add_row([img_c], top_margin=0.2, unit="inch", v_align="center")
 # 5. 渲染并显示
-fig.show()
+fig.image.show(width=500)
 # 6. 保存为高清图片
-# fig.save("output_figure.png")
-# fig.save("output_figure.pdf")
+fig.image.save("output_figure.png")
+fig.image.save("output_figure.pdf")
 ```
+
 ---
-## 📖 功能详解
-### 图像操作 (Image Object)
-`FigEngine.Image` 对象是不可变的（Immutable），所有操作都会返回一个新的对象，支持链式调用。
-* **裁剪与缩放**：
-    ```python
-    # 裁剪掉四周各 10%
-    img = img.crop(left=0.1, top=0.1, right=0.1, bottom=0.1, unit="ratio")
-    # 强制缩放到 5cm 宽
-    img = img.resize(width=5, unit="cm")
-    ```
-* **添加元素**：
-    ```python
-    # 添加刻度线 (用于调试坐标)
-    img = img.add_ticks()
-    # 添加箭头
-    img = img.add_line(start=(0.1, 0.1), end=(0.9, 0.9), arrow="end", color="red")
-    # 添加标记点
-    img = img.add_marker(x=0.5, y=0.5, style="star", size=20, color="gold")
-    ```
-### 字体工具 (Tools)
-不知道系统里有哪些字体？FigEngine 提供了美观的字体探查工具：
-```python
-from figengine import Tools
-# 列出所有可用字体，并高亮推荐的中文字体
-Tools.print_valid_fonts()
-# 搜索特定字体
-Tools.print_valid_fonts(filter_text="Arial")
-```
+
+**功能详解请参阅用户手册**
+
 ---
 ## 🤝 贡献指南
 欢迎提交 Issue 和 Pull Request！
@@ -90,7 +68,6 @@ Tools.print_valid_fonts(filter_text="Arial")
 3.  提交你的修改 (`git commit -m 'Add some AmazingFeature'`)。
 4.  推送到分支 (`git push origin feature/AmazingFeature`)。
 5.  打开一个 Pull Request。
+6.  
 ## 📄 许可证
 本项目采用 **MIT 许可证** - 详情请参阅 [LICENSE](LICENSE) 文件。
----
-*Author: Mute*

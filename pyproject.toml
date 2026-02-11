@@ -9,13 +9,14 @@ description = "High-Performance Structured Figure Engine"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { file = "LICENSE"}
-authors = [{ name = "Mute @ SYSU", email = "wubulks@mail2.sysu.edu.cn" }]
+authors = [{ name = "Omarjan Obulkasim @ SYSU", email = "wubulks@mail2.sysu.edu.cn" }]
 
 dependencies = [
   "numpy",
   "pillow",
   "matplotlib",
   "PyYAML",
+  "pdf2image",
 ]
 
 
@@ -29,7 +30,7 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["figengine*"]
 exclude = ["examples*", "tests*", "docs*"]
 
