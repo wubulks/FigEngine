@@ -31,7 +31,7 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/wubulks/FigEngine"
 Repository = "https://github.com/wubulks/FigEngine"
-Documentation = "https://github.com/wubulks/FigEngine/tree/main/doc"
+Documentation = "https://github.com/wubulks/FigEngine/blob/main/doc/FigEngine用户手册.pdf"
 
 [project.optional-dependencies]
 dev = [
