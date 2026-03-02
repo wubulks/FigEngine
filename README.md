@@ -20,7 +20,7 @@
 pip install git+https://github.com/wubulks/FigEngine.git
 ```
 
-### 通过PyPI安装 (不久后支持)
+### 通过PyPI安装
 ```
 pip install figengine
 ```
