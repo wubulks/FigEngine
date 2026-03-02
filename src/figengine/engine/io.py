@@ -13,9 +13,9 @@ Description: Input/Output Engine. Handles file reading/writing with specific
 
 import os
 from PIL import Image as PILImage
-PILImage.MAX_IMAGE_PIXELS = 1_000_000_000
 from pdf2image import convert_from_path
-
+from ..utils.consts import Consts
+PILImage.MAX_IMAGE_PIXELS = Consts.MAX_IMAGE_PIXEL
 from ..utils.validators import Validator
 from ..utils.logger import get_logger
 logger = get_logger()
@@ -30,7 +30,7 @@ class IOEngine:
     """
 
     @staticmethod
-    def load(path: str, dpi: int = 600) -> PILImage.Image:
+    def load(path: str, dpi: int = Consts.DPI) -> PILImage.Image:
         """
         从文件加载图像。
         
@@ -40,7 +40,7 @@ class IOEngine:
         """
         if not os.path.exists(path):
             raise FileNotFoundError(f"Image file not found: {path}")
-        dpi = int(dpi or 600)
+        dpi = int(dpi or Consts.DPI)
 
         ext = os.path.splitext(path)[1].lower()
 
@@ -59,7 +59,7 @@ class IOEngine:
 
 
     @staticmethod
-    def save(image: PILImage.Image, path: str, dpi: int = 600, **kwargs):
+    def save(image: PILImage.Image, path: str, dpi: int = Consts.DPI, **kwargs):
         """
         将图像保存到磁盘。
         

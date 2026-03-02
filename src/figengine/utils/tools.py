@@ -14,6 +14,7 @@ Description: General utility library for FigEngine.
 
 from typing import Union, List, Tuple, Any, Literal
 from PIL import ImageColor
+from ..utils.consts import Consts
 from .logger import get_logger
 from .validators import Validator
 
@@ -45,8 +46,8 @@ class Tools:
     @staticmethod
     def to_px(value: Union[float, int], 
               unit: Literal["pixel", "ratio", "inch", "cm", "mm"] = "ratio", 
-              reference: int = 1000, 
-              dpi: int = 300) -> int:
+              reference: int = Consts.REF_LEN, 
+              dpi: int = Consts.DPI) -> int:
         """
         将任意单位的数值转换为绝对像素值 (Integer Pixels)。
         
@@ -103,8 +104,8 @@ class Tools:
     @staticmethod
     def px_to_unit(px: int, 
                    unit: Literal["pixel", "ratio", "inch", "cm", "mm"] = "ratio", 
-                   dpi: int = 300,
-                   reference: int = 1000, 
+                   dpi: int = Consts.DPI,
+                   reference: int = Consts.REF_LEN, 
                    ) -> float:
         """
         [逆向操作] 将像素值转换为指定单位的数值。

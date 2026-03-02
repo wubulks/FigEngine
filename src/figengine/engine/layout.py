@@ -14,6 +14,7 @@ Description: Core Layout Engine. Calculates the exact (x, y) coordinates and
 from typing import List, Dict, Any, Union
 from ..utils.logger import get_logger
 from ..utils.tools import Tools
+from ..utils.consts import Consts
 
 logger = get_logger()
 
@@ -96,7 +97,7 @@ class LayoutEngine:
         for i, row in enumerate(rows):
             # 定义该行的单位转换函数 (Closure)
             def to_px(val):
-                return Tools.to_px(val, unit=row.unit, reference=content_width, dpi=300)
+                return Tools.to_px(val, unit=row.unit, reference=content_width, dpi=Consts.DPI)
 
             # --- A. 垂直间距 (Row Top Margin) ---
             r_top_px = to_px(row.margin_top)

@@ -13,7 +13,8 @@ Description: Figure layout class. Manages the layout lifecycle:
 
 from typing import List, Union, Dict, Tuple, Literal, Optional
 from PIL import Image as PILImage
-PILImage.MAX_IMAGE_PIXELS = 1_000_000_000
+from ..utils.consts import Consts
+PILImage.MAX_IMAGE_PIXELS = Consts.MAX_IMAGE_PIXEL
 
 # 内部模块导入
 from .image import Image
@@ -37,7 +38,7 @@ class Figure:
 
     def __init__(self, 
                  background: str = "white", 
-                 dpi: int = 300,
+                 dpi: int = Consts.DPI,
                  width: int = 0,   
                  height: int = 0,
                  unit: Literal["pixel", "inch", "cm", "mm"] = "inch", 

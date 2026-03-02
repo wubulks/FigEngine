@@ -20,7 +20,8 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.font_manager import FontProperties
 # import matplotlib.patches as patches # 暂未使用，可注释
 from PIL import Image as PILImage
-PILImage.MAX_IMAGE_PIXELS = 1_000_000_000
+from ..utils.consts import Consts
+PILImage.MAX_IMAGE_PIXELS = Consts.MAX_IMAGE_PIXEL
 from typing import Tuple, Optional, Dict, Any, Union, List
 
 from ..utils.logger import get_logger
@@ -128,12 +129,12 @@ class TextRenderer:
     """
     @staticmethod
     def render(text: str, 
-               fontsize: int = 24, 
+               fontsize: int = Consts.DEFAULT_FONT_SIZE, 
                color: str = "black", 
                font: str = "sans-serif",
                weight: str = "normal",      
                rotation: float = 0,         
-               dpi: int = 300,
+               dpi: int = Consts.DPI,
                box_width_inch: float = 10,
                box_height_inch: float = 10,
                box_style: Optional[Dict[str, Any]] = None,

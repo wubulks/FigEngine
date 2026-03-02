@@ -13,12 +13,13 @@ Description: Core Image class. Wraps PIL.Image to provide enhanced features
 
 from typing import Union, Tuple, Optional, Literal, Dict, Any
 from PIL import Image as PILImage, ImageDraw, ImageFont
-PILImage.MAX_IMAGE_PIXELS = 1_000_000_000
 from ..engine.io import IOEngine
 from ..engine.renderer import TextRenderer
 from ..utils.logger import get_logger
 from ..utils.validators import Validator
 from ..utils.tools import Tools
+from ..utils.consts import Consts
+PILImage.MAX_IMAGE_PIXELS = Consts.MAX_IMAGE_PIXEL
 
 logger = get_logger()
 
@@ -56,12 +57,12 @@ class Image:
         if isinstance(source, str):
             self._pil_image = IOEngine.load(source, dpi=dpi)
             file_dpi = self._pil_image.info.get('dpi')
-            self.dpi = dpi if dpi else (int(file_dpi[0]) if file_dpi else 600)
+            self.dpi = dpi if dpi else (int(file_dpi[0]) if file_dpi else Consts.DPI)
             self.source_path = source
         elif isinstance(source, PILImage.Image):
             self._pil_image = source
             self.source_path = None
-            self.dpi = dpi if dpi else 600
+            self.dpi = dpi if dpi else Consts.DPI
         else:
             raise TypeError(f"Source must be file path or PIL Image object, got {type(source)}")
         Validator.validate_dpi(self.dpi)
@@ -71,7 +72,7 @@ class Image:
     def new(cls, size: Tuple[Union[int, float], Union[int, float]], 
             facecolor: Union[str, Tuple[int, int, int]] = "white", 
             unit: Literal["pixel", "inch", "cm", "mm"] = "inch",
-            dpi: int = 300, label: Optional[str] = None,) -> 'Image':
+            dpi: int = Consts.DPI, label: Optional[str] = None,) -> 'Image':
         """
         创建一个指定尺寸和颜色的空白图像。
 
@@ -145,12 +146,12 @@ class Image:
         return self.width / self.height
 
 
-    def save(self, path: str, dpi: int = 300):
+    def save(self, path: str, dpi: int = Consts.DPI):
         """
         保存图像到文件。
 
         :param path: 输出路径 (type: str)。
-        :param dpi: 输出分辨率 (type: int, default: 300)。
+        :param dpi: 输出分辨率 (type: int, default: Consts.DPI)。
         """
         Validator.validate_dpi(dpi)
         IOEngine.save(self._pil_image, path, dpi=dpi)
@@ -756,11 +757,11 @@ class Image:
                  anchor: Optional[str] = None, 
                  offset: Union[float, int, tuple] = 0.1,
                  unit: Literal["pixel", "ratio"] = "ratio",
+                 font: str = "sans-serif", 
                  fontsize: Union[int, float] = 24, 
                  fontweight: str = "normal", 
                  rotation: float = 0, 
                  color: str = "black", 
-                 font: str = "sans-serif", 
                  box_style: Optional[Dict[str, Any]] = None,
                  dpi: int = None) -> 'Image':
         """
@@ -1278,27 +1279,27 @@ class Image:
 
     def add_rect(
             self,
-            box_start: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
-            box_end: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
+            start: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
+            end: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
             center: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
             size: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
             unit: Literal["pixel", "ratio", "inch", "cm", "mm"] = "ratio",
+            linewidth: Union[int, float] = 0.01,
             color: Union[str, Tuple[int, int, int, int]] = "red",
             edgecolor: Optional[Union[str, Tuple[int, int, int, int]]] = None,
             facecolor: Optional[Union[str, Tuple[int, int, int, int]]] = None,
-            linewidth: Union[int, float] = 2,
             fill: bool = False,
         ) -> "Image":
         """
         添加矩形区域指示器。
-        :param box_start: 矩形左上角坐标 (x1, y1)。
-        :param box_end: 矩形右下角坐标 (x2, y2)。
+        :param start: 矩形左上角坐标 (x1, y1)。
+        :param end: 矩形右下角坐标 (x2, y2)。
         :param center: 矩形中心点坐标 (cx, cy)。
         :param size: 矩形尺寸 (width, height)。
         :param unit: 坐标/尺寸单位。
-            该单位适用于 box_start/box_end 或 center/size 以及 linewidth。
+            该单位适用于 start/end 或 center/size 以及 linewidth。
             其中 ratio 单位是相对于图像宽度/高度的比例。
-            例如 unit="ratio" 且 box_start=(0.1, 0.1) 表示左上角在图像宽高的 10% 处。
+            例如 unit="ratio" 且 start=(0.1, 0.1) 表示左上角在图像宽高的 10% 处。
             另外，linewidth 使用 min(width, height) 作为参考尺寸进行转换。
             这样可以保证在不同宽高比的图像上，线宽视觉效果一致。
             当然，你也可以选择 inch/cm/mm 等绝对单位，结合 dpi 使用。
@@ -1325,11 +1326,11 @@ class Image:
         lw_px = Tools.to_px(linewidth, unit, reference=min(bw, bh), dpi=self.dpi)
         lw_px = max(1, int(round(lw_px)))
 
-        if box_start is not None and box_end is not None:
-            x1 = Tools.to_px(box_start[0], unit, reference=bw, dpi=self.dpi)
-            y1 = Tools.to_px(box_start[1], unit, reference=bh, dpi=self.dpi)
-            x2 = Tools.to_px(box_end[0], unit, reference=bw, dpi=self.dpi)
-            y2 = Tools.to_px(box_end[1], unit, reference=bh, dpi=self.dpi)
+        if start is not None and end is not None:
+            x1 = Tools.to_px(start[0], unit, reference=bw, dpi=self.dpi)
+            y1 = Tools.to_px(start[1], unit, reference=bh, dpi=self.dpi)
+            x2 = Tools.to_px(end[0], unit, reference=bw, dpi=self.dpi)
+            y2 = Tools.to_px(end[1], unit, reference=bh, dpi=self.dpi)
         elif center is not None and size is not None:
             cx = Tools.to_px(center[0], unit, reference=bw, dpi=self.dpi)
             cy = Tools.to_px(center[1], unit, reference=bh, dpi=self.dpi)
@@ -1338,7 +1339,7 @@ class Image:
             x1, y1 = cx - w / 2, cy - h / 2
             x2, y2 = cx + w / 2, cy + h / 2
         else:
-            raise ValueError("Rect requires box_start+box_end or center+size.")
+            raise ValueError("Rect requires start+end or center+size.")
 
         draw.rectangle([x1, y1, x2, y2], outline=outline_rgba, width=lw_px, fill=fill_rgba)
         return Image(base, dpi=self.dpi, label=self.label)
@@ -1347,22 +1348,22 @@ class Image:
 
     def add_oval(
         self,
-        box_start: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
-        box_end: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
+        start: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
+        end: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
         center: Optional[Tuple[Union[float, int], Union[float, int]]] = None,
         radius: Optional[Union[float, int]] = None,
         axis_ratio: float = 1.0,
         unit: Literal["pixel", "ratio", "inch", "cm", "mm"] = "ratio",
+        linewidth: Union[int, float] = 2,
         color: Union[str, Tuple[int, int, int, int]] = "red",
         edgecolor: Optional[Union[str, Tuple[int, int, int, int]]] = None,
         facecolor: Optional[Union[str, Tuple[int, int, int, int]]] = None,
-        linewidth: Union[int, float] = 2,
         fill: bool = False,
     ) -> "Image":
         """
         添加圆形/椭圆区域指示器。
-        :param box_start: 外接矩形左上角坐标 (x1, y1)。
-        :param box_end: 外接矩形右下角坐标 (x2, y2)。
+        :param start: 外接矩形左上角坐标 (x1, y1)。
+        :param end: 外接矩形右下角坐标 (x2, y2)。
         :param center: 椭圆中心点坐标 (cx, cy)。
         :param radius: 短轴半径。
         :param unit: 坐标/尺寸单位。
@@ -1390,11 +1391,11 @@ class Image:
         lw_px = Tools.to_px(linewidth, unit, reference=min(bw, bh), dpi=self.dpi)
         lw_px = max(1, int(round(lw_px)))
 
-        if box_start is not None and box_end is not None:
-            x1 = Tools.to_px(box_start[0], unit, reference=bw, dpi=self.dpi)
-            y1 = Tools.to_px(box_start[1], unit, reference=bh, dpi=self.dpi)
-            x2 = Tools.to_px(box_end[0], unit, reference=bw, dpi=self.dpi)
-            y2 = Tools.to_px(box_end[1], unit, reference=bh, dpi=self.dpi)
+        if start is not None and end is not None:
+            x1 = Tools.to_px(start[0], unit, reference=bw, dpi=self.dpi)
+            y1 = Tools.to_px(start[1], unit, reference=bh, dpi=self.dpi)
+            x2 = Tools.to_px(end[0], unit, reference=bw, dpi=self.dpi)
+            y2 = Tools.to_px(end[1], unit, reference=bh, dpi=self.dpi)
         elif center is not None and radius is not None:
             if axis_ratio <= 0:
                 raise ValueError("axis_ratio must be positive.")
@@ -1408,7 +1409,7 @@ class Image:
             x1, y1 = cx - r_long, cy - r_short
             x2, y2 = cx + r_long, cy + r_short
         else:
-            raise ValueError("Oval requires box_start+box_end or center+radius.")
+            raise ValueError("Oval requires start+end or center+radius.")
 
         draw.ellipse([x1, y1, x2, y2], outline=outline_rgba, width=lw_px, fill=fill_rgba)
         return Image(base, dpi=self.dpi, label=self.label)
@@ -1420,7 +1421,7 @@ class Image:
                 offset: Union[float, int, Tuple[float, float]] = (0.02, 0.02),
                 format_str: str = "({})", 
                 case: Literal[None, "upper", "lower"] = "upper",
-                fontsize: Union[int, float] = 18, 
+                fontsize: Union[int, float] = Consts.DEFAULT_FONT_SIZE, 
                 fontweight: str = "bold", 
                 color: str = "black", 
                 font: str = "sans-serif", 
@@ -1549,3 +1550,21 @@ class Image:
         self._pil_image.save(byte_io, format='PNG')
         return byte_io.getvalue()
     
+
+    def save(self, path: str, **kwargs):
+        """
+        保存并导出图片。
+        
+        :param path: 输出文件路径 (e.g. "output/fig1.png") (type: str)。
+        :param **kwargs: 传递给 IOEngine.save 的额外参数。
+                         例如 quality=95 (JPG), compression="tiff_lzw" (TIFF) 等。
+        """
+        final_img = self._pil_image
+        
+        logger.debug(f"Saving Figure to: {path}")
+        IOEngine.save(
+            final_img.get_internal_image(), # 传入 PIL Image
+            path, 
+            dpi=self.dpi, 
+            **kwargs
+        )
