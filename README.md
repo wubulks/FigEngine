@@ -1,4 +1,9 @@
 # FigEngine 🎨
+[![PyPI version](https://img.shields.io/pypi/v/FigEngine)](https://pypi.org/project/FigEngine/)
+[![Python versions](https://img.shields.io/pypi/pyversions/FigEngine)](https://pypi.org/project/FigEngine/)
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+[![Documentation](https://img.shields.io/badge/docs-user%20manual-blue)](https://github.com/wubulks/FigEngine/blob/main/doc/FigEngine用户手册.pdf)
+
 **A High-Performance Structured Figure Engine for Python.**
 **FigEngine** 是一个专为科研工作者设计的 Python 绘图排版引擎。它封装了 PIL 和 Matplotlib，让你能够以**物理单位**（英寸、厘米）精确控制图片的排版、缩放和标注，轻松生成用于论文发表的高质量组合图（Figure）。
 不再为 matplotlib 的 subplot 坐标烦恼，也不用在 PPT 里手动对齐图片——FigEngine 帮你搞定。
