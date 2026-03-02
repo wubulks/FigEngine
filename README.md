@@ -72,6 +72,48 @@ fig.image.save("output_figure.pdf")
 
 ---
 **FigEngine用户手册**
+<div style="text-align:center; margin-top:150px; font-family:'Times New Roman', Times, serif;">
+
+<div style="font-size:40px; font-weight:900;">
+高性能结构化图形引擎
+</div>
+
+<div style="font-size:40px; font-weight:900;">
+用户手册
+</div> 
+
+---
+
+<div style="font-size:34px; font-weight:700; margin-top:20px;">
+High-Performance Structured Figure Engine (FigEngine)
+</div>
+
+<div style="font-size:34px; font-weight:700;">
+User Manual
+</div>
+
+
+
+
+
+<div style="font-size:24px; margin-top:150px; font-weight:600;">
+<span>吾买尔江·吾布力卡斯木</span>
+<span style="margin-left:20px;">张树磊</span>
+</div>
+<div style="font-size:24px; margin-top:10px; font-weight:600;">
+<span>Omarjan Obulkasim</span>
+<span style="margin-left:20px;">Shulei Zhang</span>
+</div>
+
+<div style="font-size:24px; margin-top:200px; font-weight:700;">
+(Version 1.0.0)
+</div>
+
+<div style="font-size:24px; margin-top:20px;font-weight:600;">
+2026-03
+</div>
+
+</div>
 ---
 # **1. 引言**
 科研工作中，科研人员经常需要将多个实验结果或数据可视化图像进行拼接和排列，生成符合期刊要求的标准图形（Figure）。然而，传统的工具（如 PowerPoint 或 Illustrator）往往需要手动调整图像的大小、位置和对齐方式，这不仅繁琐且容易出错，尤其在面对高分辨率输出时，图像的质量和尺寸控制问题更加突出。FigEngine 的开发正是为了解决这些问题，它通过引入物理单位（如英寸、厘米）支持，帮助科研人员精确控制图像尺寸和位置，同时支持智能化布局和自动化排版，节省了大量手动调整的时间和精力。
