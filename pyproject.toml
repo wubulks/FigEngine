@@ -3,13 +3,15 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "figengine"
-version = "1.1.0"
+name = "FigEngine"
+version = "1.0.0"
 description = "High-Performance Structured Figure Engine"
 readme = "README.md"
 requires-python = ">=3.9"
-license = { file = "LICENSE"}
-authors = [{ name = "Omarjan Obulkasim @ SYSU", email = "wubulks@mail2.sysu.edu.cn" }]
+license = { file = "LICENSE" }
+authors = [
+  { name = "Omarjan Obulkasim @ SYSU", email = "wubulks@mail2.sysu.edu.cn" }
+]
 
 dependencies = [
   "numpy",
@@ -19,6 +21,16 @@ dependencies = [
   "pdf2image",
 ]
 
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/wubulks/FigEngine"
+Repository = "https://github.com/wubulks/FigEngine"
 
 [project.optional-dependencies]
 dev = [
