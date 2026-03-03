@@ -847,7 +847,7 @@ images_row2 = {"items": [img4, img5, img6],
 fig.replace_row(0, **images_row2)
 ```
 
-### 4.2.6保存图片
+### 4.2.6 保存图片
 **功能说明：**
 该功能用于将 `Figure` 排版结果渲染并保存到文件（如 PNG/PDF/TIFF）。保存过程会触发懒加载渲染，并输出期刊友好的高分辨率结果。
 
