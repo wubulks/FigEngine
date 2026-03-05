@@ -68,7 +68,7 @@ pip install figengine
 ## **3.2. 从 Conda 安装（推荐）**
 如果您希望直接从 Conda安装 FigEngine，只需运行以下命令：
 ```bash
-conda install figengine
+conda install omarjan::figengine
 ```
 这种方式将安装稳定版本的 FigEngine，并自动处理所有依赖项。
 

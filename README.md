@@ -15,15 +15,21 @@
 - **🔍 字体管理**：内置系统字体探查工具，轻松查找并使用中文字体。
 ---
 ## 🛠️ 安装
-### 从 GitHub 安装最新开发版 (暂时推荐)
+### 从 GitHub 安装最新开发版
 ```bash
 pip install git+https://github.com/wubulks/FigEngine.git
 ```
 
-### 通过PyPI安装
+### 通过 PyPI 安装 (推荐)
 ```
 pip install figengine
 ```
+
+### 通过 Conda 安装
+```
+conda install omarjan::figengine
+```
+
 
 ---
 
