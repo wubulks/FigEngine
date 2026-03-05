@@ -1,9 +1,10 @@
 package:
   name: figengine
-  version: "1.0.2"
+  version: "1.1.2"
 
 source:
-  path: ..
+  url: https://github.com/wubulks/FigEngine/releases/download/1.1.2/figengine-1.1.2.tar.gz
+  path: sha256:84e83f89a75ae693a2abca2e4de5625617ac1d6614e7ee7f3e5bb231d75c647e
 
 build:
   noarch: python
