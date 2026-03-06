@@ -1,0 +1,18 @@
+site_name: FigEngine
+site_description: A High-Performance Structured Figure Engine for Python
+repo_url: https://github.com/wubulks/FigEngine
+repo_name: wubulks/FigEngine
+
+nav:
+  - Home: index.md
+  - PDF Manual: UserManual_CN.pdf
+
+theme:
+  name: material
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
+  - admonition
+  - fenced_code
