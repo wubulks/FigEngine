@@ -149,6 +149,19 @@ felayout build --layout layout.yaml
 - `feimg overlay --other overlay.png` 对应 `Image.overlay(other=...)`
 - `felayout` 中的 `rows[].left_gaps`、`rows[].right_gaps`、`top_margin`、`bottom_margin` 对应 `Figure.add_row(...)`
 
+## 版本更新
+
+### `v1.2.1`
+- 新增官方 CLI 入口：
+  `feimg` 用于单图处理，`felayout` 用于多图排版。
+- 为 `feimg` 和 `felayout` 增加 `--info` 全局选项，用于显示 logo、版本、作者和依赖状态。
+- 补充并统一了 `README`、中文用户手册和 CLI 相关文档。
+- 加强了 `feimg` 与 `FigEngine.Image`、`felayout` 与 `FigEngine.Figure` 之间的参数一致性。
+
+### `v1.1.2`
+- 第一个正式版的FigEngine
+
+
 ## 文档
 
 - 项目用户手册：[`doc/FigEngine用户手册.md`](doc/FigEngine用户手册.md)
