@@ -7,19 +7,19 @@
 4. 跨平台一致性：通过分离“排版逻辑”和“渲染逻辑”，FigEngine 能够在不同操作系统和环境下生成一致的图像输出，确保科研成果的可复现性和可对比性。
 5. 丰富的图像处理支持：提供了强大的图像编辑功能，包括裁剪、缩放、添加标注、绘制几何形状和插入文本，使得用户能够轻松地对图像进行精准调整和美化，满足科研图像的高标准要求。
 
-# **FigEngine 架构**
+# **2. FigEngine 架构**
 
 ![[FigEngine.png]]
 
 
 ---
 
-# **2. 系统环境要求**
+# **3. 系统环境要求**
 FigEngine 是一个高性能的科研图形引擎，旨在为科研工作者提供便捷的图像处理与排版解决方案。
 
 ---
 
-## **2.1. 软件要求**
+## **3.1. 软件要求**
 - 操作系统:
 	- Windows 10 或更高版本
 	- macOS 10.14 或更高版本
@@ -33,30 +33,30 @@ FigEngine 是一个高性能的科研图形引擎，旨在为科研工作者提�
 
 ---
 
-## **2.2. 安装要求**
+## **3.2. 安装要求**
 - Python 包管理工具:
 	- **pip**: 用于安装和管理 Python 包。
 	* **conda**（可选）: 如果使用 Anaconda 环境，建议使用 conda 安装 Python 和依赖库。
 
 ---
 
-## **2.3. 推荐工具**
+## **3.3. 推荐工具**
 - **Jupyter Notebook**: 推荐使用 Jupyter Notebook 或 JupyterLab 进行交互式编程和图像展示，方便实时预览和调整图像。
 
 ---
 
-## **2.4. 网络连接**
+## **3.4. 网络连接**
 - GitHub: 如果从 GitHub 安装 FigEngine，需要一个有效的网络连接来访问远程仓库并下载最新版本。
 通过确保符合以上环境要求，您将能够顺利安装和运行 FigEngine，并充分利用其功能进行科研图像的高效生成和排版。
 
 ---
 
-# **3. 安装与部署**
+# **4. 安装与部署**
 FigEngine 提供了多种安装方式，用户可以根据自己的需求选择合适的安装方法。以下是几种常见的安装方式：
 
 ---
 
-## **3.1. 从 PyPI 安装（推荐）**
+## **4.1. 从 PyPI 安装（推荐）**
 如果您希望直接从 Python Package Index（PyPI）安装 FigEngine，只需运行以下命令：
 ```bash
 pip install figengine
@@ -65,7 +65,7 @@ pip install figengine
 
 ---
 
-## **3.2. 从 Conda 安装（推荐）**
+## **4.2. 从 Conda 安装（推荐）**
 如果您希望直接从 Conda安装 FigEngine，只需运行以下命令：
 ```bash
 conda install omarjan::figengine
@@ -74,7 +74,7 @@ conda install omarjan::figengine
 
 ---
 
-## **3.3. 从 GitHub 安装最新开发版**
+## **4.3. 从 GitHub 安装最新开发版**
 如果您希望安装 FigEngine 的最新开发版本，可以从 GitHub 仓库获取。运行以下命令来安装最新的代码版本：
 ```bash
 pip install git+https://github.com/wubulks/FigEngine.git
@@ -83,7 +83,7 @@ pip install git+https://github.com/wubulks/FigEngine.git
 
 ---
 
-## **3.4. 从源码安装**
+## **4.4. 从源码安装**
 如果您希望从源码进行安装，或者需要进行自定义修改，可以按照以下步骤操作：
 克隆仓库：
 首先，克隆 FigEngine 仓库到本地：
@@ -109,7 +109,7 @@ pip install .
 
 ---
 
-## **3.5. 安装开发依赖**
+## **4.5. 安装开发依赖**
 如果您希望参与开发或修改 FigEngine，可以安装开发依赖：
 ```bash
 pip install -e .[dev]
@@ -118,7 +118,7 @@ pip install -e .[dev]
 
 ---
 
-## **3.6. 更新到最新版本**
+## **4.6. 更新到最新版本**
 如果已经安装了 FigEngine 并希望更新到最新版本，可以运行以下命令：
 ```bash
 pip install --upgrade figengine
@@ -130,7 +130,7 @@ pip install --upgrade git+https://github.com/wubulks/FigEngine.git
 
 ---
 
-## **3.7. 验证安装**
+## **4.7. 验证安装**
 安装完成后，您可以通过以下命令验证 FigEngine 是否成功安装：
 ```python
 import figengine
@@ -140,10 +140,10 @@ print(figengine.__version__)
 
 ---
 
-# **4. 功能详解**
-## **4.1. 图片操作**
+# **5. 功能详解**
+## **5.1. 图片操作**
 
-### 4.1.1 导入库
+### 5.1.1 导入库
 
 ```python
 import os
@@ -154,7 +154,7 @@ import figengine as fe
 
 ---
 
-### 4.1.2 可打印的基础信息
+### 5.1.2 可打印的基础信息
 
 ```python
 # 打印版本
@@ -171,7 +171,7 @@ fe.Tools.print_valid_fonts()
 
 ---
 
-### 4.1.3 读取图片
+### 5.1.3 读取图片
 **功能说明：**
 该功能用于从文件加载图片并转换为 `Image` 对象，可用于进一步处理、显示等操作。
 
@@ -193,7 +193,7 @@ img1.show(width=500)
 
 ---
 
-### 4.1.4 创建空白填色的Image对象 (`new`)
+### 5.1.4 创建空白填色的Image对象 (`new`)
 **功能说明：**
 该功能允许用户创建一个指定尺寸和背景色的空白图像。
 
@@ -215,7 +215,7 @@ img1 = fe.Image.new(size=(6.0, 5.0), facecolor="#FFFFFF", unit="inch", dpi=600, 
 
 ---
 
-### 4.1.5 图片属性 (`size`, `dpi`, `label`)
+### 5.1.5 图片属性 (`size`, `dpi`, `label`)
 **尺寸:**
 - `Image.size`: 图片尺寸(以像素为单位)
 - `Image.get_size(unit)`: 图片尺寸，(unit支持: "pixel", "inch", "cm", "mm"，默认 "pixel")
@@ -239,7 +239,7 @@ print(f"img1.label: {img1.label}")                         # 打印图像模式
 
 ---
 
-### 4.1.6 添加图片标尺 (`add_ticks`)
+### 5.1.6 添加图片标尺 (`add_ticks`)
 *图片位置定位器, 强烈推荐只使用ratio模式, 对于其他功能也是有ratio尽量使用ratio*
 **功能说明：**
 该功能在图像中添加刻度线，帮助科研人员在图像中标注坐标轴刻度或其他重要的尺寸参考。
@@ -264,7 +264,7 @@ img2 = img1.add_ticks(step=0.01, unit='ratio', color='black', fontsize=0.008)
 
 ---
 
-### 4.1.7 添加文本 (`add_text`)
+### 5.1.7 添加文本 (`add_text`)
 **功能说明：**
 该功能用于在图像中添加文本，支持语义化定位和绝对坐标定位，可用于标注、标题、说明等。
 1. **语义化定位 (Semantic Mode)**: 不传 x, y
@@ -311,7 +311,7 @@ img1_=img1_.add_text(formula_pi, x=0.3, y=0.4, unit="ratio", anchor="center",
 ```
 
 
-### 4.1.8 添加智能标注 (labeled)
+### 5.1.8 添加智能标注 (labeled)
 **功能说明：**
 此功能用于为图像添加子图编号或标题，支持自动编号和格式化，常用于科研图像的标注。
 
@@ -352,7 +352,7 @@ img = img.labeled(label="C", loc="bottom_center", fontsize=22, color="purple",
 
 ---
 
-### 4.1.9 添加线条 (`add_line`)
+### 5.1.9 添加线条 (`add_line`)
 **功能说明：**
 此功能用于在图像中绘制线条，可以指定线条的起止点、颜色、宽度等属性，支持添加箭头。
 
@@ -379,7 +379,7 @@ img2 = img1.add_line(start=(0.1, 0.1), end=(0.9, 0.1), color="#CAEFD6", width=0.
 
 ---
 
-### 4.1.10 添加边框 (`add_rect`)
+### 5.1.10 添加边框 (`add_rect`)
 **功能说明：**
 此功能允许用户为图像添加矩形边框，可以通过起点/终点或中心/尺寸来定义矩形区域。
 
@@ -410,7 +410,7 @@ img2 = img1.add_rect(center=(0.5, 0.5), size=(5, 6), unit="inch", linewidth=0.5,
 
 ---
 
-### 4.1.11 添加圆形/椭圆 (`add_oval`)
+### 5.1.11 添加圆形/椭圆 (`add_oval`)
 **功能说明：**
 此功能用于在图像中添加圆形或椭圆，可以通过设置中心点、半径和轴比来精确控制形状。
 
@@ -441,7 +441,7 @@ img2 = img1.add_oval(center=(0.5, 0.5), radius=0.3, axis_ratio=1.5, unit="ratio"
 
 ---
 
-### 4.1.12 添加特征点 (`add_marker`)
+### 5.1.12 添加特征点 (`add_marker`)
 **功能说明：**
 此功能用于在图像上添加特征点，可以选择不同的样式、大小、颜色等。适用于标记特定位置或数据点。
 
@@ -474,7 +474,7 @@ img2 = img1.add_marker(x=0.1, y=0.1, unit="ratio", style="circle", size=0.02, co
 
 ---
 
-### 4.1.13 调整图片大小 (`resize`)
+### 5.1.13 调整图片大小 (`resize`)
 **功能说明：**
 该功能用于调整图像的大小，可以按指定的宽度、高度、比例或参考图像进行缩放。
 
@@ -530,7 +530,7 @@ print("参照另一张图像的大小进行缩放", img6.size, img6.get_size("in
 
 ---
 
-### 4.1.14 图片裁剪 (`crop`)
+### 5.1.14 图片裁剪 (`crop`)
 **功能说明：**
 此功能用于裁剪图像，可以通过指定绝对坐标或裁剪量来裁剪图像的区域。
 
@@ -566,7 +566,7 @@ print("裁剪量模式(比例)", img4.size)
 
 ---
 
-### 4.1.15 调整画布尺寸 (`pad_to_size`)
+### 5.1.15 调整画布尺寸 (`pad_to_size`)
 **功能说明：**
 此功能用于通过扩展画布的背景色来调整图像的尺寸，不会改变图像本身的大小。
 
@@ -591,7 +591,7 @@ print("以比例模式进行填充", img2.size)
 
 ---
 
-### 4.1.16 添加边框 (`add_border`)
+### 5.1.16 添加边框 (`add_border`)
 **功能说明：**
 此功能用于为图像添加边框，可以设置边框的宽度、颜色以及是否应用于特定边。
 
@@ -619,7 +619,7 @@ img2 = img1.add_border(unit='ratio', left=0.01, color='#F87SF7')
 
 ---
 
-### 4.1.17 叠加图片 (`overlay`)
+### 5.1.17 叠加图片 (`overlay`)
 **功能说明：**
 此功能用于将两张图像进行叠加，可以调整叠加图像的位置、大小和背景色。
 
@@ -646,7 +646,7 @@ img_ = img1.overlay(other=img2, x=0.1, y=0.1, unit="ratio", anchor="center", sca
 
 ---
 
-### 4.1.18 图片旋转 (`rotate`)
+### 5.1.18 图片旋转 (`rotate`)
 **功能说明：**
 该功能用于旋转图像，可以选择是否扩展画布以适应旋转后的图像。
 
@@ -668,7 +668,7 @@ img4 = img4.rotate(angle=30, expand=False, bg_color="#FFFFFF")
 
 ---
 
-### 4.1.19 图片展示 (`show`)
+### 5.1.19 图片展示 (`show`)
 **功能说明：**
 此功能用于在 Jupyter Notebook 中显示图像，可以指定图像的显示宽度和缩放比例。
 
@@ -689,7 +689,7 @@ img4 = img4.show(width=500)
 
 ---
 
-### 4.2.20 保存图片
+### 5.1.20 保存图片
 **功能说明：**
 该功能用于保存图像为文件，可以指定保存路径和格式。
 
@@ -706,12 +706,11 @@ fig.save("./assets/figure_layout_output.png")
 fig.save("./assets/figure_layout_output.pdf")
 ```
 
-
 ---
 
-## **4.2. 排版布局**
+## **5.2. 排版布局**
 
-### 4.2.1 导入库
+### 5.2.1 导入库
 
 ```python
 import os
@@ -722,7 +721,7 @@ import figengine as fe
 
 ---
 
-### 4.2.2 创建Figure
+### 5.2.2 创建Figure
 **功能说明：**
 `Figure` 是 FigEngine 的排版编排器（Orchestrator），用于组织多张图片的行列布局、间距、对齐方式与最终输出。它负责“排版逻辑”，并在需要输出时触发渲染（Lazy Evaluation）。  
 > ⚠️ **懒加载机制 (Lazy Evaluation)**
@@ -746,7 +745,7 @@ fig.set_margins(top=0.01, bottom=0.01, left=0.01, right=0.01)
 
 ---
 
-### 4.2.3  Figure中添加Image
+### 5.2.3 Figure中添加Image
 **功能说明：**
 该功能用于向 `Figure` 中添加“一行图片”，并由引擎根据行内对齐策略与间距参数自动完成排版。  
 它是 FigEngine 的核心工作流：不断 `add_row()` 组织多行，最终输出为一个完整的 Figure。
@@ -799,7 +798,7 @@ images_row2 = {"items": [img4, img5, img6],
 fig.add_row(**images_row2)
 ```
 
-###  4.2.4 删除某一行
+### 5.2.4 删除某一行
 **功能说明：**
 该功能用于从 `Figure` 中删除指定索引的一行，常用于交互式排版调试与布局迭代（例如先搭框架，再删改重排）。
 
@@ -817,7 +816,7 @@ fig.image.show(width=500)
 ```
 
 
-###  4.2.5 替换Figure中的某一行
+### 5.2.5 替换Figure中的某一行
 **功能说明：**
 该功能用于将 `Figure` 中某一行整体替换为新的行配置，适用于快速尝试不同的图像组合、间距或对齐策略，而无需重建整个 Figure。
 
@@ -832,7 +831,7 @@ fig.image.show(width=500)
 - `top_margin`: 该行距离上一行的间距（单个值）
 - `bottom_margin`: 该行距离下一行的间距（单个值）
 - `unit`: 单位(支持: "pixel", "ratio", "inch", "cm", "mm"，默认 "ratio")
-- `h_align/v_align`: 行内图片的对齐/排版方式（同 4.2.3）
+- `h_align/v_align`: 行内图片的对齐/排版方式（同 5.2.3）
 
 **使用案例:**
 ```python
@@ -847,7 +846,7 @@ images_row2 = {"items": [img4, img5, img6],
 fig.replace_row(0, **images_row2)
 ```
 
-### 4.2.6 保存图片
+### 5.2.6 保存图片
 **功能说明：**
 该功能用于将 `Figure` 排版结果渲染并保存到文件（如 PNG/PDF/TIFF）。保存过程会触发懒加载渲染，并输出期刊友好的高分辨率结果。
 
@@ -863,3 +862,517 @@ fig.replace_row(0, **images_row2)
 fig.save("./assets/figure_layout_output.png")
 fig.save("./assets/figure_layout_output.pdf")
 ```
+
+---
+
+# **6. FigEngine 官方命令行工具**
+
+本章面向普通用户，介绍如何使用 `FigEngine` 自带的两个命令行工具完成完整制图流程。  
+前面的章节主要说明 `FigEngine` 的底层能力是什么；而这一章更关心“实际怎么用”。它重点回答以下几个问题：
+
+1. 我应该什么时候用 `feimg`，什么时候用 `felayout`？
+2. 我拿到一批原始图片后，应该按什么步骤处理？
+3. 哪些命令最常用？参数大致怎么写？
+4. 如果我完全不想写 Python，只想靠命令行完成制图，应该怎么做？
+
+你可以先记住下面这条最重要的原则：
+
+- `feimg` 负责单张图片处理
+- `felayout` 负责多张图片排版
+- `FigEngine` 提供底层图像和排版能力
+
+只要把这三者的关系理顺，后面的命令和配置文件就会容易理解得多。
+
+## **6.1. 先理解两个工具的分工**
+
+在科研制图中，最常见的工作通常可以分成两步：先处理单图，再组织排版。
+
+### **6.1.1. 第一类任务：处理单张图片**
+
+例如：
+
+- 裁掉显微图边缘无用区域
+- 统一不同图片的尺寸
+- 给 panel 加 `(a)`、`(b)` 标签
+- 添加箭头、方框、文字说明
+- 在图像上叠加局部放大图
+- 给图片补白边或黑边
+
+这类任务适合用 `feimg`。
+
+### **6.1.2. 第二类任务：拼接多张图片**
+
+例如：
+
+- 把三张图片排成一行
+- 把两行 panel 上下堆叠
+- 控制每行图片之间的间隙
+- 控制整张 Figure 的总宽度与边距
+- 固定输出路径并反复重建
+
+这类任务适合用 `felayout`。
+
+### **6.1.3. 一句话理解**
+
+可以把它们记成：
+
+1. `feimg` = 先把每一张图修好
+2. `felayout` = 再把修好的图拼好
+
+这也是本项目最推荐、最稳定、最容易复现的使用方式。
+
+## **6.2. 安装后会得到什么**
+
+安装 `figengine` 之后，你除了可以在 Python 脚本或 Notebook 中写：
+
+```python
+import figengine as fe
+```
+
+还可以直接在终端中使用：
+
+```bash
+feimg --help
+felayout --help
+```
+
+如果你更喜欢模块方式，也可以这样运行：
+
+```bash
+python -m figengine.feimg --help
+python -m figengine.felayout --help
+```
+
+两种调用方式本质上完全一样，只是启动入口不同。
+
+此外，现在两个 CLI 还支持一个全局选项：
+
+```bash
+feimg --info
+felayout --info
+```
+
+这个选项会显示：
+
+- 当前工具的 logo
+- 当前版本号
+- 作者信息
+- 依赖库安装状态
+
+如果你刚完成安装，建议先运行一次 `--help` 或 `--info`，确认命令入口和依赖环境都没有问题。
+
+## **6.3. `feimg`：单图处理工具**
+
+### **6.3.1. `feimg` 适合什么场景**
+
+如果你手里已经有一张图片，而你希望对它做局部修改、增强说明或统一尺寸，通常就应该先想到 `feimg`。
+
+典型场景包括：
+
+1. 创建空白图像作为示意图底板
+2. 查看图片尺寸、DPI、标签等信息
+3. 裁剪图片
+4. 缩放图片
+5. 补白边或加边框
+6. 添加文字、标签、箭头、矩形、圆形、标记点
+7. 叠加另一张图片
+8. 旋转图片
+
+### **6.3.2. `feimg` 的基本结构**
+
+`feimg` 的命令写法是：
+
+```bash
+feimg [全局选项] <命令> [命令参数]
+```
+
+常见例子：
+
+```bash
+feimg info -i input.png
+feimg resize -i input.png -o output.png --width 4 --unit inch
+feimg text -i input.png -o output.png --text "(a)" --loc top_left --unit ratio
+```
+
+也就是说：
+
+- `-i/--input` 通常表示输入图片
+- `-o/--output` 通常表示输出图片
+- 后面的 `--width`、`--text`、`--unit` 等才是具体处理参数
+
+### **6.3.3. 最常用的 `feimg` 命令**
+
+下面这些命令是最常用的，也是大多数用户最先接触、最值得优先掌握的部分。
+
+1. `new`
+创建一张空白图片。
+
+```bash
+feimg new -o blank.png --size 6 4 --unit inch --dpi 600
+```
+
+2. `info`
+查看图片的尺寸、DPI 和标签信息。
+
+```bash
+feimg info -i panel_a.png
+```
+
+3. `resize`
+调整图片尺寸，可以按宽度、高度、比例或参考图来缩放。
+
+```bash
+feimg resize -i panel_a.png -o panel_a_resized.png --width 4 --unit inch
+feimg resize -i panel_a.png -o panel_a_resized.png --ref-image ref.png
+```
+
+4. `crop`
+裁剪图片。
+
+```bash
+feimg crop -i panel_a.png -o panel_a_crop.png --box 0.1 0.1 0.9 0.9 --unit ratio
+```
+
+5. `text`
+添加文字说明。
+
+```bash
+feimg text -i panel_a.png -o panel_a_text.png --text "control" --x 0.5 --y 0.1 --unit ratio
+```
+
+6. `labeled`
+添加子图标签，例如 `(a)`。
+
+```bash
+feimg labeled -i panel_a.png -o panel_a_labeled.png --label a --format-str "({})" --loc top_left
+```
+
+7. `border`
+给图片补边框。
+
+```bash
+feimg border -i panel_a.png -o panel_a_border.png --thickness 0.02 --unit inch --color "#000000"
+```
+
+8. `overlay`
+把一张图片叠加到另一张图片上。
+
+```bash
+feimg overlay -i base.png --other inset.png -o merged.png --x 0.8 --y 0.2 --unit ratio
+```
+
+### **6.3.4. `feimg` 中常见参数输入方式**
+
+很多新手第一次接触命令行工具时，最容易困惑的往往不是命令名，而是“一个参数到底应该怎么写”。这里把最常见的输入风格集中说明一下。
+
+1. 单个数值
+
+```bash
+--width 4
+--fontsize 24
+--angle 30
+```
+
+2. 两个数值
+常用于尺寸或坐标。
+
+```bash
+--size 6 5
+--target-size 6 4
+--start 0.1 0.2
+--end 0.8 0.9
+```
+
+3. 单值或双值字符串
+常用于缩放或偏移。
+
+```bash
+--scale 0.5
+--scale 0.5,0.8
+--offset 0.02
+--offset 0.02,0.03
+```
+
+4. 单值或四值字符串
+主要用于边框厚度。
+
+```bash
+--thickness 0.1
+--thickness 0.1,0.2,0.3,0.4
+```
+
+它们分别表示：
+
+- 一个值：四边统一厚度
+- 四个值：`left,right,top,bottom`
+
+### **6.3.5. `feimg` 使用时的几个经验建议**
+
+1. 如果你在做论文图标注，推荐优先使用 `ratio` 作为位置单位。  
+这样不同尺寸的图片更容易保持相对一致的布局。
+
+2. 如果你需要满足版面宽度要求，推荐在缩放阶段使用 `inch / cm / mm`。  
+这样输出尺寸更容易和论文版面直接对应。
+
+3. 如果你需要长期复现处理流程，推荐把一连串 `feimg` 命令写入脚本。  
+这样以后重做图时不需要重新手工点软件。
+
+## **6.4. `felayout`：多图排版工具**
+
+### **6.4.1. `felayout` 适合什么场景**
+
+`felayout` 适合在“单图已经准备好”的前提下，把多张图片稳定地拼接成最终 Figure。
+
+它尤其适合下面这些情况：
+
+1. 论文中需要多 panel 组合图
+2. 一个布局要反复微调
+3. 布局规则需要纳入版本管理
+4. 你希望布局本身可以像代码一样保存、比较和复用
+
+### **6.4.2. `felayout` 的核心思路**
+
+`felayout` 不要求你把所有布局参数都直接写在命令行里。  
+它的思路是：
+
+1. 先写一个布局文件
+2. 再用命令读取布局文件
+3. 最后生成最终图像
+
+因此，`felayout` 的最常见工作流永远是这三步：
+
+```bash
+felayout init -o layout.yaml
+felayout validate --layout layout.yaml
+felayout build --layout layout.yaml
+```
+
+### **6.4.3. `felayout` 支持哪些布局文件**
+
+`felayout` 同时支持：
+
+- `JSON`
+- `YAML`
+
+这两种格式在功能上完全等价，区别只在书写风格。
+
+通常建议：
+
+1. 如果你喜欢结构严格、机器生成方便，用 `JSON`
+2. 如果你主要手工编辑，希望文件更好读，用 `YAML`
+
+### **6.4.4. 一个布局文件通常长什么样**
+
+布局文件一般包含三部分：
+
+1. `figure`
+定义整张图的全局属性，例如总宽度、背景色、DPI 和页边距。
+
+2. `rows`
+定义每一行放哪些图片、间距是多少、应该如何对齐。
+
+3. `output`
+定义最终输出路径以及保存参数。
+
+最小 YAML 结构如下：
+
+```yaml
+figure: {}
+rows: []
+output: {}
+```
+
+一个实际可用的最小示例：
+
+```yaml
+figure:
+    width: 8
+    unit: inch
+    dpi: 600
+
+rows:
+    - row_index: 0
+      items:
+          - output/panel_a.png
+          - output/panel_b.png
+      left_gaps: 0.02
+      right_gaps: 0.02
+      unit: ratio
+
+output:
+    path: output/final_figure.png
+```
+
+### **6.4.5. `felayout` 中最重要的字段怎么理解**
+
+1. `figure.width`
+最终 Figure 的总宽度。  
+这是最关键的字段之一，很多情况下建议优先明确设置它。
+
+2. `figure.unit`
+`figure.width`、`figure.height` 等字段所使用的单位。
+
+3. `figure.margins`
+整张 Figure 四周的边距。
+
+4. `rows[].items`
+这一行里有哪些图片。  
+通常就是图片路径列表。
+
+5. `rows[].left_gaps` / `rows[].right_gaps`
+图片左右两侧的间隔。  
+可以写成一个数，也可以写成数组。
+
+单值写法：
+
+```yaml
+left_gaps: 0.01
+right_gaps: 0.01
+```
+
+数组写法：
+
+```yaml
+left_gaps:
+    - 0.00
+    - 0.02
+right_gaps:
+    - 0.02
+    - 0.00
+```
+
+6. `rows[].top_margin` / `rows[].bottom_margin`
+当前行与上下内容之间的垂直间距。
+
+7. `rows[].v_align` / `rows[].h_align`
+控制这一行内部图片如何对齐、如何铺满。
+
+8. `row_index`
+显式指定行顺序。  
+如果你不想依赖文件中出现的顺序，可以直接用它来控制排版顺序。
+
+### **6.4.6. `felayout` 的三条常用命令**
+
+1. 生成模板
+
+```bash
+felayout init -o layout.yaml
+```
+
+2. 校验布局文件
+
+```bash
+felayout validate --layout layout.yaml
+```
+
+3. 生成最终结果
+
+```bash
+felayout build --layout layout.yaml
+```
+
+如果你希望临时覆盖输出路径，可以这样写：
+
+```bash
+felayout build --layout layout.yaml -o output/final.png
+```
+
+如果目标文件已经存在并允许覆盖：
+
+```bash
+felayout build --layout layout.yaml -o output/final.png --overwrite
+```
+
+## **6.5. 把两个工具连起来使用**
+
+这一节是整章里最重要的部分。  
+如果你是第一次接触这套工具，建议按下面的顺序真正动手做一遍。
+
+### **6.5.1. 第一步：先处理单图**
+
+先对每个 panel 做单图处理。例如：
+
+```bash
+feimg resize -i raw/panel_a.png -o output/panel_a_resize.png --width 4 --unit inch
+feimg labeled -i output/panel_a_resize.png -o output/panel_a.png --label a --format-str "({})" --loc top_left
+
+feimg resize -i raw/panel_b.png -o output/panel_b_resize.png --width 4 --unit inch
+feimg labeled -i output/panel_b_resize.png -o output/panel_b.png --label b --format-str "({})" --loc top_left
+```
+
+到这一步，你得到的是“每一张已经处理好的 panel”。
+
+### **6.5.2. 第二步：再写布局文件**
+
+把这些已经处理好的图片放进布局文件：
+
+```yaml
+figure:
+    width: 8
+    unit: inch
+    dpi: 600
+
+rows:
+    - row_index: 0
+      items:
+          - output/panel_a.png
+          - output/panel_b.png
+      left_gaps: 0.02
+      right_gaps: 0.02
+      top_margin: 0.01
+      bottom_margin: 0.01
+      unit: ratio
+      v_align: center
+      h_align: full
+
+output:
+    path: output/final_figure.png
+```
+
+### **6.5.3. 第三步：检查并构建**
+
+先检查：
+
+```bash
+felayout validate --layout layout.yaml
+```
+
+再构建：
+
+```bash
+felayout build --layout layout.yaml
+```
+
+做到这里，你就完成了从原始图片到最终 Figure 的完整流程。
+
+## **6.6. 对新用户最重要的几条建议**
+
+1. 不要一开始就尝试写复杂布局。  
+先从“两张图一行”开始，确认命令、路径和单位都理解正确，再逐渐加复杂度。
+
+2. 单图处理和多图排版最好明确分开。  
+不要把所有问题都堆到 `felayout` 里解决。  
+该在 `feimg` 里完成的缩放、标注、边框，尽量先做完。
+
+3. 多用 `validate`，不要等到最后 `build` 时才发现结构错误。  
+特别是布局文件较长时，`validate` 会帮你尽早发现结构问题。
+
+4. 对位置和边距类参数，优先理解 `ratio`。  
+它是初学者最常用、也最容易迁移的单位之一。
+
+5. 对总宽度、版面控制类参数，优先理解 `inch`。  
+这会让最终图片更容易匹配论文版面尺寸。
+
+## **6.7. 如果你还想看更细的说明**
+
+本章已经把两个 CLI 的核心思路、典型命令和推荐工作流合并介绍了一遍。  
+如果你接下来需要查询更细的参数表、更多示例或常见错误示例，可以继续阅读：
+
+- `feimg/feimg用户手册.md`
+- `felayout/felayout用户手册.md`
+
+建议的阅读顺序是：
+
+1. 先读本章，建立整体流程概念
+2. 再读 `feimg用户手册`，掌握单图处理命令
+3. 最后读 `felayout用户手册`，掌握布局文件写法与排版细节

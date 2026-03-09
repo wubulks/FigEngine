@@ -19,6 +19,8 @@ dependencies = [
   "matplotlib",
   "PyYAML",
   "pdf2image",
+  "typer>=0.12,<1.0",
+  "rich>=13,<14",
 ]
 
 classifiers = [
@@ -32,6 +34,10 @@ classifiers = [
 Homepage = "https://github.com/wubulks/FigEngine"
 Repository = "https://github.com/wubulks/FigEngine"
 Documentation = "https://github.com/wubulks/FigEngine/blob/main/doc/FigEngine用户手册.pdf"
+
+[project.scripts]
+feimg = "figengine.feimg.main:main"
+felayout = "figengine.felayout.main:main"
 
 [project.optional-dependencies]
 dev = [

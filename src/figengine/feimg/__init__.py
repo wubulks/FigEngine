@@ -1,59 +1,39 @@
-# figengine/__init__.py
-# -*- coding: utf-8 -*-
-
 """
 Project: FigEngine
-File: __init__.py
+File: feimg/__init__.py
 Author: Omarjan Obulkasim @ SYSU
-Date: 2026/01/18
+Date: 2026/03/08
 License: MIT License
-Description: Top-level package initialization. 
-             Exposes core classes (Figure, Image, Row) and utilities (Config, Logger) 
-             for easy access.
+Description: Official FigEngine single-image CLI package.
 """
 
 from __future__ import annotations
 
+from importlib.metadata import PackageNotFoundError, metadata, version
 
-from .core.figure import Figure
-from .core.image import Image
-from .core.row import Row
-from .logos import FIGENGINE_LOGO
-from .utils.logger import setup_logger
-from .utils.config import Config
-from .utils.tools import Tools
-
-
-from importlib.metadata import version, metadata, PackageNotFoundError
+from .. import Figure, Image, Tools
+from ..logos import FEIMG_LOGO
 
 try:
     __version__ = version("figengine")
     dist_metadata = metadata("figengine")
-    
     __author__ = dist_metadata.get("Author") or dist_metadata.get("Author-email") or "Unknown"
-    
     if "<" in __author__ and ">" in __author__:
         __author__ = __author__.split("<")[0].strip()
-    
     __author_email__ = dist_metadata.get("Author-email", "")
     __license__ = dist_metadata.get("License", "Unknown")
-
 except PackageNotFoundError:
     __version__ = "0.0.0"
     __author__ = "Unknown"
     __author_email__ = ""
     __license__ = "Unknown"
 
-logo = FIGENGINE_LOGO
+logo = FEIMG_LOGO
 
-# 定义导出的公共接口
 __all__ = [
-    "Figure", 
-    "Image", 
-    "Row", 
-    "Config", 
+    "Figure",
+    "Image",
     "Tools",
-    "setup_logger", 
     "__version__",
     "__author__",
     "__author_email__",
