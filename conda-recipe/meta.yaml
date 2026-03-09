@@ -1,10 +1,10 @@
 package:
   name: figengine
-  version: "1.1.2"
+  version: "1.2.1"
 
 source:
-  url: https://github.com/wubulks/FigEngine/releases/download/1.1.2/figengine-1.1.2.tar.gz
-  path: sha256:84e83f89a75ae693a2abca2e4de5625617ac1d6614e7ee7f3e5bb231d75c647e
+  url: https://github.com/wubulks/FigEngine/releases/download/1.2.1/figengine-1.2.1.tar.gz
+  sha256: e9b4259125496532e25903336431fcc3db1c7ced4d70fdd68a86c6ea19b3cc38
 
 build:
   noarch: python
@@ -23,10 +23,17 @@ requirements:
     - matplotlib
     - pyyaml
     - pdf2image
+    - typer >=0.12,<1.0
+    - rich >=13,<14
 
 test:
   imports:
     - figengine
+    - figengine.feimg
+    - figengine.felayout
+  commands:
+    - feimg --help
+    - felayout --help
 
 about:
   home: https://github.com/wubulks/FigEngine
@@ -37,7 +44,7 @@ about:
     FigEngine is a high-performance structured figure engine for
     scientific image processing and layout composition.
   dev_url: https://github.com/wubulks/FigEngine
-  doc_url: https://github.com/wubulks/FigEngine/blob/main/doc/FigEngine用户手册.pdf
+  doc_url: https://github.com/wubulks/FigEngine/blob/main/usermanuals/FigEngine_UserManual_CN.md
 
 extra:
   recipe-maintainers:

@@ -21,28 +21,103 @@
 
 ---
 
-# **2. 设计思路**
-`FigEngine` 的原生排版接口是按“行”来组织的：
+# **2. 系统环境要求**
+`felayout` 是一个命令行多图排版工具，没有图形化界面（GUI）。  
+它不会提供拖拽图片、鼠标对齐或可视化面板编辑功能，而是通过命令行读取布局文件并生成最终 Figure。
 
-```python
-fig.add_row(...)
-fig.add_row(...)
-fig.add_row(...)
+因此，在使用之前，建议先确认你的运行环境满足以下要求。
+
+## **2.1. 操作系统要求**
+`felayout` 可以运行在常见的桌面和服务器操作系统中，包括：
+
+- Windows 10 或更高版本
+- macOS 10.14 或更高版本
+- Linux（推荐 Ubuntu 18.04 或更高版本）
+
+只要系统能正常运行 Python 和命令行环境，通常就可以使用 `felayout`。
+
+## **2.2. Python 与依赖要求**
+建议使用：
+
+- Python 3.9 或更高版本
+
+`felayout` 底层依赖 `FigEngine` 的排版能力，并依赖若干 Python 库完成配置文件读取、CLI 解析和结果输出。常见依赖包括：
+
+- `FigEngine`
+- `Pillow`
+- `matplotlib`
+- `numpy`
+- `PyYAML`
+- `pdf2image`
+- `typer`
+- `rich`
+
+正常通过 `pip` 安装时，这些依赖一般会自动安装；但如果你是源码开发或手工部署，建议明确检查。
+
+## **2.3. 命令行环境要求**
+由于 `felayout` 没有 GUI，实际使用完全依赖命令行环境。建议确认以下几点：
+
+1. 系统中有可用终端  
+例如：
+- Windows PowerShell
+- Windows Terminal
+- macOS Terminal
+- Linux Shell
+
+2. 可以正常调用 Python  
+例如：
+
+```bash
+python --version
 ```
 
-这在 Python 脚本里很好用，但如果直接搬到 CLI，就会遇到几个问题：
+3. 安装后可以正常识别 `felayout` 命令  
+例如：
 
-1. 命令会非常长。
-2. 一旦行数变多，很难读，也很难改。
-3. 参数重复很多，不适合保存和复现。
+```bash
+felayout --help
+```
 
-因此，`felayout` 采用声明式布局文件：
+如果这些命令能正常运行，说明基本环境已经具备。
 
-1. 你不需要记一长串命令参数。
-2. 你只需要维护一个布局文件，例如 `layout.json` 或 `layout.yaml`。
-3. 然后通过 `felayout build --layout ...` 一次性输出结果。
+## **2.4. 不提供 GUI 的含义**
+这里需要特别强调：
 
-换句话说，`felayout` 把“排版命令”变成了“排版配置”。
+- `felayout` 不是拖拽式排版软件
+- 它不会打开可视化排版窗口
+- 它不会像 PowerPoint、Keynote 或 Illustrator 那样让你直接鼠标拖动图片
+
+它的设计目标是：
+
+1. 让排版规则写进配置文件
+2. 让最终图版可以重复构建
+3. 让布局调整过程更适合版本管理
+
+因此，`felayout` 更适合：
+
+- 论文 Figure 排版
+- 需要长期维护的图版工程
+- 希望布局配置可追踪、可复现的项目
+
+## **2.5. 推荐使用方式**
+实际使用时，建议采用下面的方式：
+
+1. 在终端中执行 `felayout init / validate / build`
+2. 用文本编辑器维护 `layout.json` 或 `layout.yaml`
+3. 每次调整布局后重新运行构建命令
+
+最典型的工作流是：
+
+```bash
+felayout init -o layout.yaml
+felayout validate --layout layout.yaml
+felayout build --layout layout.yaml
+```
+
+如果你已经习惯命令行、配置文件和脚本化工作流，那么 `felayout` 会比手动拖拽图片稳定得多。
+
+总之，需要明确的一点是：  
+`felayout` 是命令行软件，不是图形化桌面排版软件。
 
 ---
 

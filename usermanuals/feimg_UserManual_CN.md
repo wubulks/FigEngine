@@ -23,44 +23,102 @@
 
 ---
 
-# **2. 与 FigEngine 的关系**
-`feimg` 不是独立图像引擎，而是 `FigEngine.Image` 的 CLI 包装。
+# **2. 系统环境要求**
+`feimg` 是一个命令行单图处理工具，没有图形化界面（GUI）。  
+也就是说，它不是通过按钮、菜单和窗口来操作的，而是需要你在终端、命令提示符或 Shell 中输入命令。
 
-多数命令都可以直接对应到一个 `FigEngine.Image` 方法：
+因此，在正式使用之前，建议先确认你的运行环境满足以下要求。
 
-| `feimg` 命令 | 对应方法 |
-| --- | --- |
-| `new` | `Image.new()` |
-| `info` | `Image(...)` + 属性读取 |
-| `ticks` | `Image.add_ticks()` |
-| `text` | `Image.add_text()` |
-| `labeled` | `Image.labeled()` |
-| `line` | `Image.add_line()` |
-| `rect` | `Image.add_rect()` |
-| `oval` | `Image.add_oval()` |
-| `marker` | `Image.add_marker()` |
-| `resize` | `Image.resize()` |
-| `crop` / `clip` | `Image.crop()` |
-| `pad` | `Image.pad_to_size()` |
-| `border` | `Image.add_border()` |
-| `overlay` | `Image.overlay()` |
-| `rotate` | `Image.rotate()` |
+## **2.1. 操作系统要求**
+`feimg` 本质上是一个 Python 命令行程序，理论上可以运行在主流桌面和服务器环境中，包括：
 
-为了兼顾 CLI 易用性和 API 一致性，当前策略是：
+- Windows 10 或更高版本
+- macOS 10.14 或更高版本
+- Linux（推荐 Ubuntu 18.04 或更高版本）
 
-1. 优先新增与 API 一致的参数名
-2. 保留旧参数作为兼容别名
+只要系统能够正常运行 Python 和命令行环境，就可以使用 `feimg`。
 
-典型例子：
+## **2.2. Python 与依赖要求**
+建议使用：
 
-1. `new` 推荐使用 `--size W H`
-同时兼容 `--width W --height H`
+- Python 3.9 或更高版本
 
-2. `pad` 推荐使用 `--target-size W H`
-同时兼容 `--target-width W --target-height H`
+`feimg` 依赖 `FigEngine` 以及若干常用 Python 图像处理与命令行库。实际安装时，这些依赖通常会由 `pip` 自动处理，但你仍然需要知道它们大致是什么：
 
-3. `overlay` 推荐使用 `--other`
-同时兼容 `--overlay`
+- `FigEngine`
+- `Pillow`
+- `matplotlib`
+- `numpy`
+- `PyYAML`
+- `pdf2image`
+- `typer`
+- `rich`
+
+如果你是通过项目源码安装，这些依赖更需要特别留意。
+
+## **2.3. 命令行环境要求**
+由于 `feimg` 没有 GUI，因此你至少需要具备以下条件：
+
+1. 能打开终端环境  
+例如：
+- Windows PowerShell
+- Windows Terminal
+- macOS Terminal
+- Linux Shell
+
+2. 能在命令行中运行 Python  
+例如：
+
+```bash
+python --version
+```
+
+3. 安装完成后能够直接执行 `feimg` 命令  
+例如：
+
+```bash
+feimg --help
+```
+
+如果你的系统能够识别这些命令，说明命令行入口基本正常。
+
+## **2.4. 不提供 GUI 的含义**
+很多用户第一次接触这类工具时，会下意识寻找“打开软件窗口”的方式。  
+这里需要明确说明：
+
+- `feimg` 没有独立图形界面
+- 它不会弹出编辑窗口
+- 它不会像 Photoshop、PowerPoint 或 Illustrator 那样提供可视化按钮操作
+
+它的设计目标是：
+
+1. 让图片处理过程可复现
+2. 让操作步骤适合写进脚本
+3. 让批量处理更稳定
+
+因此，`feimg` 更适合：
+
+- 科研工作流
+- 批处理任务
+- 自动化脚本
+- 需要长期重复生成的图像处理流程
+
+## **2.5. 推荐使用方式**
+虽然 `feimg` 没有 GUI，但这并不影响日常使用。  
+实际工作中，推荐这样搭配：
+
+1. 用终端执行 `feimg` 命令
+2. 用文件管理器或图片查看器查看输出结果
+3. 必要时把命令保存到 `.sh`、`.bat` 或项目脚本中
+
+如果你更喜欢交互式环境，也可以：
+
+1. 在 VS Code 的终端中使用它
+2. 在 Jupyter 环境中配合 `FigEngine` Python API 使用
+3. 在项目脚本中批量调用它
+
+总之，需要记住的一点是：  
+`feimg` 是命令行软件，不是图形化桌面软件。
 
 ---
 
