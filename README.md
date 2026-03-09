@@ -164,7 +164,7 @@ felayout build --layout layout.yaml
 
 ## 文档
 
-- 项目用户手册：[`doc/FigEngine用户手册.md`](doc/FigEngine用户手册.md)
+- 项目用户手册：[`doc/FigEngine用户手册.md`](usermanuals/FigEngine_UserManual_CN.md)
 - 单图处理工具：`figengine.feimg`
 - 布局工具：`figengine.felayout`
 
