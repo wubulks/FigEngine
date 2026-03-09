@@ -11,6 +11,8 @@ Description: Core Image class. Wraps PIL.Image to provide enhanced features
              like physical units support, smart resizing, and easy annotations.
 """
 
+import os
+
 from typing import Union, Tuple, Optional, Literal, Dict, Any
 from PIL import Image as PILImage, ImageDraw, ImageFont
 from ..engine.io import IOEngine
@@ -50,14 +52,14 @@ class Image:
             self.label = label
         else:
             if isinstance(source, str):    
-                self.label = source
+                self.label = os.path.basename(source).split('.')[0]  # 默认标签为文件名（不含扩展名）
             else:
                 self.label = "Unnamed Image"
         # 加载逻辑委托给 Engine
         if isinstance(source, str):
             self._pil_image = IOEngine.load(source, dpi=dpi)
             file_dpi = self._pil_image.info.get('dpi')
-            self.dpi = dpi if dpi else (int(file_dpi[0]) if file_dpi else Consts.DPI)
+            self.dpi = dpi if dpi else (round(file_dpi[0]) if file_dpi else Consts.DPI)
             self.source_path = source
         elif isinstance(source, PILImage.Image):
             self._pil_image = source
@@ -1420,7 +1422,7 @@ class Image:
                 loc: PositionType = "top_left", 
                 offset: Union[float, int, Tuple[float, float]] = (0.02, 0.02),
                 format_str: str = "({})", 
-                case: Literal[None, "upper", "lower"] = "upper",
+                case: Literal[None, "upper", "lower"] = None,
                 fontsize: Union[int, float] = Consts.DEFAULT_FONT_SIZE, 
                 fontweight: str = "bold", 
                 color: str = "black", 
@@ -1464,7 +1466,9 @@ class Image:
         content = str(content)
 
         # 2. 处理大小写
-        if case == "upper":
+        if case == None:
+            pass # 保持原样
+        elif case == "upper":
             content = content.upper()
         elif case == "lower":
             content = content.lower()
@@ -1563,7 +1567,7 @@ class Image:
         
         logger.debug(f"Saving Figure to: {path}")
         IOEngine.save(
-            final_img.get_internal_image(), # 传入 PIL Image
+            final_img,
             path, 
             dpi=self.dpi, 
             **kwargs

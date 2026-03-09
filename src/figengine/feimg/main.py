@@ -201,18 +201,16 @@ def new_command(
     )
 
 
-@app.command("info", help="Print image size, DPI, and label metadata as JSON.")
+@app.command("info", help="Print image size, DPI, and label metadata.")
 def info_command(
     ctx: typer.Context,
     input_path: str = typer.Option(..., "-i", "--input", help="Input image path."),
-    dpi: Optional[int] = typer.Option(None, "--dpi", help="Input image DPI."),
 ) -> None:
     _dispatch(
         ctx,
         "info",
         info.execute,
         input_path=input_path,
-        dpi=dpi,
     )
 
 
@@ -343,7 +341,7 @@ def line_command(
     width: float = typer.Option(0.01, "--width", help="Line width."),
     arrow: Optional[str] = typer.Option(None, "--arrow", help="start/end/both."),
     arrow_size: Optional[float] = typer.Option(None, "--arrow-size", help="Arrow size."),
-    arrow_style: Optional[str] = typer.Option(None, "--arrow-style", help="Arrow style."),
+    arrow_style: Optional[str] = typer.Option(None, "--arrow-style", help="Arrow style: triangle, open, bar, diamond, circle."),
     arrow_angle: Optional[float] = typer.Option(None, "--arrow-angle", help="Arrow angle."),
     arrow_shorten: Optional[float] = typer.Option(None, "--arrow-shorten", help="Line shorten."),
     arrow_fill: Optional[bool] = typer.Option(None, "--arrow-fill/--no-arrow-fill", help="Fill arrow."),
@@ -460,7 +458,7 @@ def marker_command(
     x: float = typer.Option(..., "--x", help="Marker X."),
     y: float = typer.Option(..., "--y", help="Marker Y."),
     unit: Optional[str] = typer.Option(None, "--unit", help="pixel/ratio/inch/cm/mm."),
-    style: str = typer.Option("circle", "--style", help="Marker style."),
+    style: str = typer.Option("circle", "--style", help="Marker style: circle, square, triangle, diamond, cross, triangle_up, triangle_down, pentagon, hexagon, star, target"),
     size: float = typer.Option(0.02, "--size", help="Marker size."),
     color: str = typer.Option("red", "--color", help="Fill color."),
     outline: Optional[str] = typer.Option(None, "--outline", help="Outline color."),
@@ -532,7 +530,7 @@ def crop_command(
     top: float = typer.Option(0.0, "--top", help="Trim from top."),
     right: float = typer.Option(0.0, "--right", help="Trim from right."),
     bottom: float = typer.Option(0.0, "--bottom", help="Trim from bottom."),
-    unit: Optional[str] = typer.Option(None, "--unit", help="pixel/inch/cm/mm."),
+    unit: Optional[str] = typer.Option(None, "--unit", help="pixel/inch/cm/mm/ratio."),
     dpi: Optional[int] = typer.Option(None, "--dpi", help="Input image DPI."),
     overwrite: bool = typer.Option(False, "--overwrite", help="Overwrite output file."),
 ) -> None:
@@ -567,7 +565,7 @@ def clip_command(
     top: float = typer.Option(0.0, "--top", help="Trim from top."),
     right: float = typer.Option(0.0, "--right", help="Trim from right."),
     bottom: float = typer.Option(0.0, "--bottom", help="Trim from bottom."),
-    unit: Optional[str] = typer.Option(None, "--unit", help="pixel/inch/cm/mm."),
+    unit: Optional[str] = typer.Option(None, "--unit", help="pixel/inch/cm/mm/ratio."),
     dpi: Optional[int] = typer.Option(None, "--dpi", help="Input image DPI."),
     overwrite: bool = typer.Option(False, "--overwrite", help="Overwrite output file."),
 ) -> None:

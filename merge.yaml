@@ -1,0 +1,54 @@
+figure:
+  background: '#FFFFFF'
+  dpi: 600
+  unit: inch
+  margins:
+    top: 0.02
+    bottom: 0.02
+    left: 0.02
+    right: 0.02
+  margins_unit: ratio
+rows:
+- name: row_0
+  row_index: 0
+  items:
+  - black.png
+  - white.png
+  left_gaps: 0.01
+  right_gaps: 0.01
+  top_margin: 0.01
+  bottom_margin: 0.01
+  unit: ratio
+  v_align: center
+  h_align: justify
+- name: row_1
+  row_index: 1
+  items:
+  - blue.png
+  left_gaps:
+  - 0.0
+  right_gaps:
+  - 0.0
+  top_margin: 0.01
+  bottom_margin: 0.01
+  unit: ratio
+  v_align: full
+  h_align: justify
+- name: row_2
+  row_index: 2
+  items:
+  - green.png
+  left_gaps:
+  - 0.0
+  right_gaps:
+  - 0.0
+  top_margin: 0.01
+  bottom_margin: 0.01
+  unit: ratio
+  v_align: full
+  h_align: justify
+
+
+output:
+  path: layout.png
+  save_kwargs: {}
